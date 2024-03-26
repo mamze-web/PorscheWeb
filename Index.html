@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style/style.css">
+    <Link
+    <title>Porsche DataPi Map</title>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-V3WQjcSSI4Nj7VxDVNQNikHpx91J_zg&callback=initMap" async defer></script>
+    <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+<body>
+<!-- 지도 표시 요소 추가-->
+<div id="map" style="height: 1000px; width: 100%;"></div>
+
+<!-- 주소 검색 기능 추가 -->
+<div>
+    <input type="text" id="addressInput" placeholder="주소를 입력하세요">
+    <button onclick="searchAddress()">검색</button>
+</div>
+
+<!-- 현재 위치로 이동하는 버튼 추가 -->
+<div>
+    <button onclick="findCurrentLocation()">내 위치로 이동</button>
+</div>
+
+<!-- 지도 초기화 함수 호출-->
+<script>
+    
+</script>
+</body>
+</html>
