@@ -1,0 +1,81 @@
+*{
+    font-family: "Jua", sans-serif;
+    margin:0px;
+
+}
+
+
+.logo{
+    display: flex;
+    justify-content: center;
+}
+
+.line{
+    border-top:3px solid rgb(240,240,240);
+    margin-bottom:50px;
+}
+
+.myaddress{
+    text-align: center;
+    
+}
+#maptext{
+}
+.dock{
+    text-align: center;
+    position: fixed;
+    background-color:rgb(255,227,76,0.9);
+    padding:10px;
+    border-radius: 10px;
+    bottom:1%;  
+    right:45%;  
+    left:45%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:100px;
+}
+#map{
+    border-radius: 20px;
+    width:50vw;
+    height:50vw;
+    float:left;
+    box-shadow: 1px 1px 50px rgb(150,150,150);
+}
+#info{
+    width:35vw;
+    height: 35vw;
+    background-color: Rgb(240,240,240);
+    border-radius: 20px;
+    padding:25px;
+    box-shadow: 1px 1px 50px rgb(150,150,150);
+
+}
+.infobox{
+    display: flex;
+}
+#infotext{
+    position:absolute;
+    transform: translate(-50%,-50%);
+}
+.mapzip{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    text-align: center;
+    margin:0px 10px 
+}
+.button{
+     margin-bottom:20px;
+}
+.maper{
+    left:10%;
+}
+
+#title{
+    color:rgb(255,227,76);
+    text-align: center;
+}
+marker{
+    background-color:blue;
+}
