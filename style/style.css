@@ -3,11 +3,16 @@
     margin:0px;
 
 }
-
+canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
 
 .logo{
     display: flex;
     justify-content: center;
+    padding:50px;
 }
 
 .line{
@@ -19,37 +24,46 @@
     text-align: center;
     
 }
+
 #maptext{
+    width:25vw;
+    img{
+        width:20vw;
+    }
+
 }
-.dock{
-    text-align: center;
-    position: fixed;
-    background-color:rgb(255,227,76,0.9);
-    padding:10px;
-    border-radius: 10px;
-    bottom:1%;  
-    right:45%;  
-    left:45%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width:100px;
-}
+
+
 #map{
     border-radius: 20px;
-    width:50vw;
-    height:50vw;
+    width:30vw;
+    height:30vw;
     float:left;
     box-shadow: 1px 1px 50px rgb(150,150,150);
 }
+#myChart{
+    width:28vw;
+    height:28vw;
+    
+}
+#lineh{
+    border-left : thick solid rgb(230,230,230);
+    height:28vw;
+}
+#theme{
+
+}
 #info{
-    width:35vw;
-    height: 35vw;
-    background-color: Rgb(240,240,240);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width:56vw;
+    height: 28vw;
+    background-color: white;
     border-radius: 20px;
     padding:25px;
     box-shadow: 1px 1px 50px rgb(150,150,150);
-
 }
 .infobox{
     display: flex;
