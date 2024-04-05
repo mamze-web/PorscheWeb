@@ -14,6 +14,16 @@ canvas {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+#addressList{
+    font-size:1vw;
+    color:rgb(30,30,30);
+}
+
+
+
+#dnbtn{
+
+}
 
 .logo{
     display: flex;
@@ -30,7 +40,9 @@ canvas {
     text-align: center;
     
 }
-
+#pininfo{
+    color:red;
+}
 #maptext{
     width:25vw;
     img{
@@ -84,7 +96,6 @@ canvas {
 }
 #info{
     text-align: center;
-    
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -97,7 +108,9 @@ canvas {
     box-shadow: 1px 1px 50px rgb(150,150,150);
 }
 #infotop{
+    overflow:auto;
 
+    text-align: left;
     width:25vw;
     height: 15vw;
     background-color:var(--main-bg-color);
@@ -105,6 +118,9 @@ canvas {
     padding:25px;
     box-shadow: 1px 1px 50px rgb(150,150,150);
 }
+
+
+
 .infobox{
     display: flex;
 }
@@ -112,7 +128,7 @@ canvas {
     position:absolute;
     transform: translate(-50%,-50%);
 }
-.mapzip{
+.maper{
     display: flex;
     justify-content: space-around;
     flex-direction: row;

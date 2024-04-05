@@ -1,13 +1,8 @@
 
-        
-  const csvFiles = [
-    './doc/1.csv',
-    '/doc/2.csv'
-    // 여기에 필요한 만큼의 파일을 추가할 수 있습니다
-];
+
 
 // 열의 인덱스와 이름을 설정합니다
-
+        var centerposition = {lat: 37.584182, lng: 127.024492}
         var selectedMarker = null; // 선택된 마커를 저장하는 전역 변수
         var myChart = null; // 그래프를 저장하는 전역 변수
         var map; // 지도 객체를 변수로 선언
@@ -52,13 +47,69 @@
                 imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPdO_UPgR6CdcfgwmOsxZkoimUUvPf6Wf6bA&s",
                 csvFilePath: "./doc/2.csv"
             },
+            {
+                address: "서울특별시 미래산업과학고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "서울특별시 미래산업과학고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "서울특별시 미래산업과학고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "서울특별시 미래산업과학고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "서울특별시 미래산업과학고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "서울특별시 미래산업과학고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "서울특별시 미래산업과학고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "서울특별시 미래산업과학고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "서울특별시 미래산업과학고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "서울특별시 미래산업과학고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "서울특별시 미래산업과학고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+
         ];
        
         function initMap() {
             // 지도를 생성
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 37.584182, lng: 127.024492}, // 초기 위치 설정
-                zoom: 10, // 확대 수준
+                center:centerposition, // 초기 위치 설정
+                zoom: 7, // 확대 수준
                 mapTypeId: 'roadmap'
             });
 
@@ -69,8 +120,11 @@
             infoWindow = new google.maps.InfoWindow();
 
             // 클러스터러를 생성
-            markerCluster = new MarkerClusterer(map, markers,
-                {imagePath: 'http://www.empowervate.org/wp-content/uploads/2015/11/circle.jpg'});
+            markerCluster = new MarkerClusterer(map, markers,{
+                imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+            }
+                
+);
           
             
             // 각 주소에 대해 마커 표시
@@ -85,7 +139,30 @@
                 });
             });
         }
- 
+        function displayAddressList() {
+            var addressListDiv = document.getElementById('addressList');
+            var addressHTML = '<ul>';
+            pinData.forEach(function(pin) {
+                addressHTML += '<li>' + '<a id="mappin"><img  src="https://firebasestorage.googleapis.com/v0/b/microschool-gongdo.appspot.com/o/prod%2Fres%2FPorsche%20web%2Ftest%2Flocation-pin.png?alt=media&token=f67a7209-45dc-4c70-89bc-fe6a1f6c1209" width=20;></a>'+pin.address + '<a id="dnbutton" href="'+ pin.csvFilePath +'" download><button id="dnbtn">다운로드</button></a>' ; + '</li>' 
+            
+            });
+            
+            addressHTML += '</ul>';
+            addressListDiv.innerHTML = addressHTML;
+            document.getElementById("pininfo").innerHTML = addressHTML;
+        }
+       
+        // 페이지가 로드될 때 주소 목록 표시
+        window.onload = function() {
+            displayAddressList();
+            
+        };
+
+        const mvbtn = document.getElementById('mappin')
+
+        mvbtn.addEventListener('click' , function(){
+            alert('hi');
+        })
         function placeMarker(location, data) {
             var marker = new google.maps.Marker({
                 position: location,
@@ -93,13 +170,14 @@
                 icon: {
                     url: 'https://firebasestorage.googleapis.com/v0/b/microschool-gongdo.appspot.com/o/prod%2Fres%2FPorsche%20web%2Ftest%2Fbee.png?alt=media&token=1ec62c16-c7b7-45e2-a9e5-0f5b0e286dbe', // 빨간색 마커 이미지
                     labelOrigin: new google.maps.Point(32,33),
-                    scaledSize: new google.maps.Size(40, 40)
+                    scaledSize: new google.maps.Size(60, 60)
                     
                 }
             });
         
 
             // 마커 클릭 시 정보 창 열기
+           
             marker.addListener('click', function() {
                 // 선택된 마커 업데이트
                 selectedMarker = marker;
@@ -125,6 +203,8 @@
             });
         
         markerCluster.addMarker(marker);
+
+        
         }
         
         function updateChart(csvData) {
@@ -153,7 +233,8 @@
         
                         backgroundColor: 'rgba(39,86,246, 0.2)',
                         borderColor: 'rgba(39,86,246, 1)',
-                        borderWidth: 1
+                        borderWidth: 1,
+
                     }]
                 },
                 options: {
@@ -161,10 +242,12 @@
                         yAxes: [{
                             ticks: {
                                 beginAtZero: true
+                           
                             }
                         }]
                     }
                 }
+            
             });
             const rows2 = csvData.split('\n').slice(1); // 헤더를 건너뜁니다.
             rows.forEach(row => {
@@ -174,7 +257,7 @@
             });
             const ctx2 = document.getElementById('myChart2').getContext('2d');
             myChart2 = new Chart(ctx2, {
-                type: 'line',
+                type: 'bar',
         
                 data: {
                     labels: labels2,
@@ -207,47 +290,6 @@
             }
         }
         
-
-        function findCurrentLocation() {
-            // HTML5의 Geolocation으로 사용자의 현재 위치를 얻어옵니다.
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var pos = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-
-                    // 현재 위치로 지도 이동
-                    map.setCenter(pos);
-
-                    // 현재 위치에 마커 표시
-                    var currentLocationMarker = new google.maps.Marker({
-                        position: pos,
-                        map: map,
-                        title: "현재 위치"
-                    });
-
-                    // 정보 창 열기
-                    var contentString = '<h1>현재 위치</h1>' +
-                        '<p>위도: ' + pos.lat + '<br>경도: ' + pos.lng + '</p>';
-                    infoWindow.setContent(contentString);
-                    infoWindow.open(map, currentLocationMarker);
-                }, function() {
-                    handleLocationError(true, infoWindow, map.getCenter());
-                });
-            } else {
-                // 브라우저가 Geolocation을 지원하지 않을 때의 처리
-                handleLocationError(false, infoWindow, map.getCenter());
-            }
-        }
-        
-        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-            infoWindow.setPosition(pos);
-            infoWindow.setContent(browserHasGeolocation ?
-                'Geolocation이 활성화되지 않았습니다.' :
-                '브라우저가 Geolocation을 지원하지 않습니다.');
-            infoWindow.open(map);
-        }
 
         initMap();
       
