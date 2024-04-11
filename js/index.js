@@ -41,68 +41,8 @@
                 address: "강원도",
                 imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPdO_UPgR6CdcfgwmOsxZkoimUUvPf6Wf6bA&s",
                 csvFilePath: "./doc/2.csv"
-            },
-            {
-                address: "강원랜드",
-                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPdO_UPgR6CdcfgwmOsxZkoimUUvPf6Wf6bA&s",
-                csvFilePath: "./doc/2.csv"
-            },
-            {
-                address: "서울특별시 미래산업과학고등학교",
-                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
-                csvFilePath: "./doc/2.csv"
-            },
-            {
-                address: "서울특별시 미래산업과학고등학교",
-                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
-                csvFilePath: "./doc/2.csv"
-            },
-            {
-                address: "서울특별시 미래산업과학고등학교",
-                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
-                csvFilePath: "./doc/2.csv"
-            },
-            {
-                address: "서울특별시 미래산업과학고등학교",
-                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
-                csvFilePath: "./doc/2.csv"
-            },
-            {
-                address: "서울특별시 미래산업과학고등학교",
-                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
-                csvFilePath: "./doc/2.csv"
-            },
-            {
-                address: "서울특별시 미래산업과학고등학교",
-                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
-                csvFilePath: "./doc/2.csv"
-            },
-            {
-                address: "서울특별시 미래산업과학고등학교",
-                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
-                csvFilePath: "./doc/2.csv"
-            },
-            {
-                address: "서울특별시 미래산업과학고등학교",
-                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
-                csvFilePath: "./doc/2.csv"
-            },
-            {
-                address: "서울특별시 미래산업과학고등학교",
-                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
-                csvFilePath: "./doc/2.csv"
-            },
-            {
-                address: "서울특별시 미래산업과학고등학교",
-                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
-                csvFilePath: "./doc/2.csv"
-            },
-            {
-                address: "서울특별시 미래산업과학고등학교",
-                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s",
-                csvFilePath: "./doc/2.csv"
-            },
-
+            }
+            
         ];
        
         function initMap() {
@@ -139,14 +79,26 @@
                 });
             });
         }
+        function searchAddress() {
+            var address = document.getElementById('addressInput').value;
+            geocoder.geocode({'address': address}, function(results, status) {
+                if (status === 'OK') {
+                    var location = results[0].geometry.location;
+                    map.setCenter(location); // 지도 이동
+                    map.setZoom(15); // 원하는 줌 레벨로 조정
+                } else {
+                    alert('주소를 찾을 수 없습니다.');
+                }
+            });
+        }
         function displayAddressList() {
             var addressListDiv = document.getElementById('addressList');
             var addressHTML = '<ul>';
+
             pinData.forEach(function(pin) {
-                addressHTML += '<li>' + '<a id="mappin"><img  src="https://firebasestorage.googleapis.com/v0/b/microschool-gongdo.appspot.com/o/prod%2Fres%2FPorsche%20web%2Ftest%2Flocation-pin.png?alt=media&token=f67a7209-45dc-4c70-89bc-fe6a1f6c1209" width=20;></a>'+pin.address + '<a id="dnbutton" href="'+ pin.csvFilePath +'" download><button id="dnbtn">다운로드</button></a>' ; + '</li>' 
-            
+                addressHTML += '<li>' + '<div id="mappin"><a href=javascript:onclick()><img  src="https://firebasestorage.googleapis.com/v0/b/microschool-gongdo.appspot.com/o/prod%2Fres%2FPorsche%20web%2Ftest%2Flocation-pin.png?alt=media&token=f67a7209-45dc-4c70-89bc-fe6a1f6c1209" width=20;>'+pin.address + '<a id="dnbutton" href="'+ pin.csvFilePath +'" download><button id="dnbtn">다운로드</button></a></a></div>' ; + '</li>' 
             });
-            
+
             addressHTML += '</ul>';
             addressListDiv.innerHTML = addressHTML;
             document.getElementById("pininfo").innerHTML = addressHTML;
@@ -158,11 +110,7 @@
             
         };
 
-        const mvbtn = document.getElementById('mappin')
-
-        mvbtn.addEventListener('click' , function(){
-            alert('hi');
-        })
+    
         function placeMarker(location, data) {
             var marker = new google.maps.Marker({
                 position: location,
@@ -206,7 +154,34 @@
 
         
         }
-        
+
+        function onclick(){
+            
+            $("li").click(function(){
+            var firstAddress = pinData[$(this).index()].address;
+            var csvPath = pinData[$(this).index()].csvFilePath;
+
+            geocoder.geocode({'address': firstAddress}, function(results, status) {
+                if (status === 'OK') {
+                    var location = results[0].geometry.location;
+                    map.setCenter(location); // 지도 이동
+                    map.setZoom(15); // 원하는 줌 레벨로 조정
+                } else {
+                    alert('주소를 찾을 수 없습니다.');
+                }
+            
+            });
+            if (csvPath) {
+                fetch(csvPath)
+                    .then(response => response.text())
+                    .then(csvData => {
+                        updateChart(csvData);
+                    })
+                    .catch(error => console.error('Error fetching CSV data:', error));
+            } else {
+                clearChart(); // CSV 파일 경로가 없으면 그래프를 지웁니다.
+            }
+        })}
         function updateChart(csvData) {
             clearChart();
         
