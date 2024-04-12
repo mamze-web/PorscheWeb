@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" media="all and (min-width:1200px)" href="desktop.css" >
+<link rel="stylesheet" media="all and (min-width:768px) and (max-width:1199px)" href="laptop.css" >
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
@@ -24,29 +27,27 @@
 <body>
 <div id="main">
 <div class="header">
-    <div class="logo"><img src="./img/logo.png" style="width:200px; height:100%;"></div>
-    <div class="line"></div>
+    <div class="logo"><img src="./img/logo.png" width="200"></div>
     
+
+    <div class="line"></div>
+ 
 </div>  
 
-<span style="font-weight: bold; font-size:1.5vw;color:rgb(140,140,140);">데이터 확인하기</span>
+<span id="data">곤충호텔 데이터 확인하기</span>
 
-  <div class="mapzip">
-    <input type="text" id="addressInput" placeholder="주소를 입력하세요">
-    <button onclick="searchAddress()">검색</button>
-    <div class="maper">   
-
+    <div id="maphead">
         <div id="map"></div>
+ 
         <div id="infotop">
-        <div id="toptext">자료실</div>
-        <div class="line"></div>  
-        <div id="addressList"></div>    
+            <div id="addressListbox">
+                <div id="toptext">자료실</div>
+                <div class="line"></div>  
+                <div id="addressList"></div> 
+            </div>   
         </div>
-     </div>
-     
-    
+
 </div>
-     
     <!-- 지도 초기화 함수 호출-->
     <div class="zip"> 
         <div id="info">
@@ -55,14 +56,15 @@
         
         </div>
         <div id="graph">
-        <canvas id="myChart" width="500" height="300"></canvas>
+        <canvas id="myChart" ></canvas>
         
         </div>
         <div id="graph">
-        <canvas id="myChart2" width="500" height="300"></canvas>
+        <canvas id="myChart2"></canvas>
     </div>
     </div>   
     </div>
+
 
 </div>
 </body>

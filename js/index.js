@@ -22,24 +22,49 @@
                 csvFilePath: "./doc/2.csv"
             },
             {
-                address: "수원역",
-                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStRwGhyqyLhhjdAqsvIKr5xEze6cu9dAACZw&s",
+                address: "성문고등학교",
+                imageUrl: "",
                 csvFilePath: "./doc/2.csv"
             },
             
             {
-                address: "제주공항",
+                address: "인천과학예술영재학교",
                 imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVKUPPs9aIw3r2iLX-Q1Hv5Wgl7GKCQR1Apg&s",
                 csvFilePath: "./doc/2.csv"
             },
             {
-                address: "제주 국밥",
+                address: "인제고등학교",
                 imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVKUPPs9aIw3r2iLX-Q1Hv5Wgl7GKCQR1Apg&s",
                 csvFilePath: "./doc/2.csv"
             },
             {
-                address: "강원도",
+                address: "신도고등학교",
                 imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPdO_UPgR6CdcfgwmOsxZkoimUUvPf6Wf6bA&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "수원하이텍고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVKUPPs9aIw3r2iLX-Q1Hv5Wgl7GKCQR1Apg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "미림마이스터고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVKUPPs9aIw3r2iLX-Q1Hv5Wgl7GKCQR1Apg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "서귀포고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVKUPPs9aIw3r2iLX-Q1Hv5Wgl7GKCQR1Apg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "전북과학고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVKUPPs9aIw3r2iLX-Q1Hv5Wgl7GKCQR1Apg&s",
+                csvFilePath: "./doc/2.csv"
+            },
+            {
+                address: "경문고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVKUPPs9aIw3r2iLX-Q1Hv5Wgl7GKCQR1Apg&s",
                 csvFilePath: "./doc/2.csv"
             }
             
@@ -93,15 +118,17 @@
         }
         function displayAddressList() {
             var addressListDiv = document.getElementById('addressList');
-            var addressHTML = '<ul>';
+            var addressHTML = '<ul class=filter>';
 
             pinData.forEach(function(pin) {
-                addressHTML += '<li>' + '<div id="mappin"><a href=javascript:onclick()><img  src="https://firebasestorage.googleapis.com/v0/b/microschool-gongdo.appspot.com/o/prod%2Fres%2FPorsche%20web%2Ftest%2Flocation-pin.png?alt=media&token=f67a7209-45dc-4c70-89bc-fe6a1f6c1209" width=20;>'+pin.address + '<a id="dnbutton" href="'+ pin.csvFilePath +'" download><button id="dnbtn">다운로드</button></a></a></div>' ; + '</li>' 
+                addressHTML += '<li>' +'<a id="list" href=javascript:onclick()>'+pin.address + '</a>'+'<a id="dnbutton" href="'+ pin.csvFilePath +'" download><button id="dnbtn">다운로드</button></a>'+'<br><div class=line2></div></div>'  + '</li>' 
+                
             });
 
             addressHTML += '</ul>';
             addressListDiv.innerHTML = addressHTML;
             document.getElementById("pininfo").innerHTML = addressHTML;
+            
         }
        
         // 페이지가 로드될 때 주소 목록 표시
@@ -160,7 +187,9 @@
             $("li").click(function(){
             var firstAddress = pinData[$(this).index()].address;
             var csvPath = pinData[$(this).index()].csvFilePath;
-
+            var imgurl = pinData[$(this).index()].imageUrl;
+    
+           
             geocoder.geocode({'address': firstAddress}, function(results, status) {
                 if (status === 'OK') {
                     var location = results[0].geometry.location;
@@ -171,6 +200,12 @@
                 }
             
             });
+            
+            var contentString2 = '<h1>' + firstAddress + '</h1>' + '<div id="content">' +
+                    '<img src="' + imgurl + '" alt="이미지">' +
+                    '</p>' +
+                    '</div>';
+                document.getElementById("maptext").innerHTML = contentString2;
             if (csvPath) {
                 fetch(csvPath)
                     .then(response => response.text())
@@ -181,7 +216,9 @@
             } else {
                 clearChart(); // CSV 파일 경로가 없으면 그래프를 지웁니다.
             }
+                document.getElementById("maptext").innerHTML = contentString;
         })}
+
         function updateChart(csvData) {
             clearChart();
         
