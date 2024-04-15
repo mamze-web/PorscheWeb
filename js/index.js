@@ -1,7 +1,6 @@
-
-
-
-// 열의 인덱스와 이름을 설정합니다
+        const files = ["./doc/1.csv", "./doc/2.csv"]; // 파일 목록
+        const selectedColumnIndex = 1; // 원하는 열의 인덱스
+        let allValues = [];
         var centerposition = {lat: 37.584182, lng: 127.024492}
         var selectedMarker = null; // 선택된 마커를 저장하는 전역 변수
         var myChart = null; // 그래프를 저장하는 전역 변수
@@ -104,6 +103,18 @@
                 });
             });
         }
+        Promise.all(files.map(file =>
+            fetch(file)
+                .then(response => response.text())
+                .then(csvData => {
+                    const rows = csvData.trim().split('\n').map(row => row.split(','));
+                    const selectedColumnValues = rows.slice(1).map(row => parseFloat(row[selectedColumnIndex])).filter(value => !isNaN(value));
+                    allValues.push(...selectedColumnValues); // 모든 값을 배열에 추가
+                })
+        )).then(() => {
+            const average = allValues.reduce((acc, val) => acc + val, 0) / allValues.length;
+            document.getElementById('averageValue').innerHTML = `<p>평균 온도: ${average.toFixed(1)}°C</p>`;
+        });
         function searchAddress() {
             var address = document.getElementById('addressInput').value;
             geocoder.geocode({'address': address}, function(results, status) {
@@ -158,7 +169,7 @@
                 selectedMarker = marker;
         
                 // 정보창 업데이트
-                var contentString = '<h1>' + data.address + '</h1>' + '<div id="content">' +
+                var contentString = '<h2>' + data.address + '</h2>' + '<div id="content">' +
                     '<img src="' + data.imageUrl + '" alt="이미지">' +
                     '</p>' +
                     '</div>';
