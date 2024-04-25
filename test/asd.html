@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON to Graph</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>JSON to Graph</h2>
+    <input type="file" id="file-input" accept=".json">
+    <br>
+    <button onclick="loadJSON()">Load JSON & Draw Graph</button>
+    <br>
+    <canvas id="myChart" width="400" height="400"></canvas>
+
+    <script>
+        function loadJSON() {
+            const fileInput = document.getElementById('file-input');
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const jsonData = JSON.parse(event.target.result);
+                drawGraph(jsonData);
+            };
+
+            reader.readAsText(fileInput.files[0]);
+        }
+
+        function drawGraph(data) {
+            const labels = data.map(item => item.label);
+            const values = data.map(item => item.value);
+
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Data',
+                        data: values,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Maps Full Screen</title>
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-V3WQjcSSI4Nj7VxDVNQNikHpx91J_zg&callback=initMap" async defer></script>
+    <style>
+        /* 스타일을 사용하여 지도가 화면에 꽉 차도록 설정 */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 지도를 표시할 div 요소 -->
+    <div id="map"></div>
+    
+    <script>
+        let map;
+
+        function initMap() {
+            // 지도를 생성하고 화면에 표시합니다.
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: -34.397, lng: 150.644 }, // 초기 중심 좌표
+                zoom: 8, // 초기 확대 수준
+            });
+        }
+    </script>
+</body>
+</html>

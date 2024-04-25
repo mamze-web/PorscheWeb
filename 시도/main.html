@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <title>Porsche DataPi Map</title>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-V3WQjcSSI4Nj7VxDVNQNikHpx91J_zg&callback=initMap" async defer></script>
+    <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <script>
+        var map; // 지도 객체를 변수로 선언
+        var markers = []; // 마커 객체를 배열로 선언
+        var geocoder; // Geocoder 객체를 변수로 선언
+        var infoWindow; // 정보 윈도우를 변수로 선언
+
+        // 핀에 대한 데이터 객체 생성
+        var pinData = [
+            {
+                address: "서울특별시 고려대학교 서울캠퍼스",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGSgEtf5glS_6Ul-iCizK7DSQcUubNcHHPQA&s" // 첫 번째 핀에 대한 이미지 URL
+            },
+            {
+                address: "서울특별시 미래산업과학고등학교",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWFhO56j80uvEsF7UNrS52Cp8vODlRJlX8cg&s" // 두 번째 핀에 대한 이미지 URL
+            },
+            {
+                address: "수원역",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStRwGhyqyLhhjdAqsvIKr5xEze6cu9dAACZw&s" // 두 번째 핀에 대한 이미지 URL
+            },
+            {
+                address: "제주공항",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVKUPPs9aIw3r2iLX-Q1Hv5Wgl7GKCQR1Apg&s" // 두 번째 핀에 대한 이미지 URL
+            },
+            {
+                address: "강원도",
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPdO_UPgR6CdcfgwmOsxZkoimUUvPf6Wf6bA&s" // 두 번째 핀에 대한 이미지 URL
+            },
+        ];
+
+        function initMap() {
+            // The location of Uluru
+            const uluru = { lat: -25.344, lng: 131.031 };
+
+            // The map, centered at Uluru
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: uluru,
+                mapId: "DEMO_MAP_ID",
+            });
+
+            // Geocoder 객체를 생성
+            geocoder = new google.maps.Geocoder();
+
+            // 정보 윈도우를 생성
+            infoWindow = new google.maps.InfoWindow();
+
+            // 각 주소에 대해 마커 표시
+            pinData.forEach(function(data) {
+                geocoder.geocode({'address': data.address}, function(results, status) {
+                    if (status === 'OK') {
+                        var location = results[0].geometry.location;
+                        placeMarker(location, data);
+                    } else {
+                        console.error('Error geocoding address:', data.address);
+                    }
+                });
+            });
+
+            // Create an array of alphabetical characters used to label the markers.
+            const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            // Add some markers to the map.
+            const markers = locations.map((position, i) => {
+                const label = labels[i % labels.length];
+                const marker = new google.maps.Marker({
+                    position,
+                    label,
+                    map: map
+                });
+
+                // markers can only be keyboard focusable when they have click listeners
+                // open info window when marker is clicked
+                marker.addListener("click", () => {
+                    infoWindow.setContent(label);
+                    infoWindow.open(map, marker);
+                });
+                return marker;
+            });
+
+            // Add a marker clusterer to manage the markers.
+            new MarkerClusterer({ markers, map });
+        }
+
+        function placeMarker(location, data) {
+            // 새로운 마커를 생성하고 지도에 추가
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+
+            // 마커 클릭 시 정보 창 열기
+            marker.addListener('click', function() {
+                // 여기서는 해당 핀에 대한 데이터의 이미지 URL을 가져와서 InfoWindow에 표시합니다.
+                var contentString = '<div id="content">' +
+                    '<img src="' + data.imageUrl + '" alt="이미지">'+'<br>위치:' + data.address +
+                    '<p>위도: ' + location.lat() + '<br>경도: ' + location.lng() + '</p>' +
+                    '</div>';
+                infoWindow.setContent(contentString);
+                infoWindow.open(map, marker);
+            });
+
+            // 마커를 배열에 추가
+            markers.push(marker);
+        }
+
+        const locations = [
+            { lat: -31.56391, lng: 147.154312 },
+            { lat: -33.718234, lng: 150.363181 },
+            { lat: -33.727111, lng: 150.371124 },
+            { lat: -33.848588, lng: 151.209834 },
+            { lat: -33.851702, lng: 151.216968 },
+            { lat: -34.671264, lng: 150.863657 },
+            { lat: -35.304724, lng: 148.662905 },
+            { lat: -36.817685, lng: 175.699196 },
+            { lat: -36.828611, lng: 175.790222 },
+            { lat: -37.75, lng: 145.116667 },
+            { lat: -37.759859, lng: 145.128708 },
+            { lat: -37.765015, lng: 145.133858 },
+            { lat: -37.770104, lng: 145.143299 },
+            { lat: -37.7737, lng: 145.145187 },
+            { lat: -37.774785, lng: 145.137978 },
+            { lat: -37.819616, lng: 144.968119 },
+            { lat: -38.330766, lng: 144.695692 },
+            { lat: -39.927193, lng: 175.053218 },
+            { lat: -41.330162, lng: 174.865694 },
+            { lat: -42.734358, lng: 147.439506 },
+            { lat: -42.734358, lng: 147.501315 },
+            { lat: -42.735258, lng: 147.438 },
+            { lat: -43.999792, lng: 170.463352 },
+        ];
+    </script>
+</head>
+<body>
+    <!-- 지도 표시 요소 추가-->
+    <div id="map" style="height: 1000px; width: 100%;"></div>
+
+    <!-- 주소 검색 기능 추가 -->
+    <div>
+        <input type="text" id="addressInput" placeholder="주소를 입력하세요">
+        <button onclick="searchAddress()">검색</button>
+    </div>
+
+    <!-- 현재 위치로 이동하는 버튼 추가 -->
+    <div>
+        <button onclick="findCurrentLocation()">내 위치로 이동</button>
+    </div>
+
+    <!-- 지도 초기화 함수 호출-->
+    <script>
+        initMap();
+    </script>
+</body>
+<style>
+     body{
+        background-color:black;
+     }
+</style>
+</html>

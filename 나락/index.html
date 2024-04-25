@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <title>Porsche DataPi Map</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-V3WQjcSSI4Nj7VxDVNQNikHpx91J_zg&callback=initMap" async defer></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script>
+        var map; // 지도 객체를 변수로 선언
+        var markers = []; // 마커 객체를 배열로 선언
+        var geocoder; // Geocoder 객체를 변수로 선언
+        var markerCluster; // 마커 클러스터 객체를 변수로 선언
+
+        function initMap() {
+            // 지도를 생성
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 37.584182, lng: 127.024492}, // 초기 위치 설정
+                zoom: 14 // 확대 수준
+            });
+
+            // Geocoder 객체를 생성
+            geocoder = new google.maps.Geocoder();
+
+            // 원하는 주소 목록
+            var desiredAddresses = [
+                "서울특별시 고려대학교 서울캠퍼스",
+                "서울특별시 여의도동 여의도공원",
+                "성대로 31",
+                "성대로 33",
+                "미래산업과학고등학교",
+                "해성여고"
+            ];
+
+            // 각 주소에 대해 마커 표시
+            desiredAddresses.forEach(function(address) {
+                geocoder.geocode({'address': address}, function(results, status) {
+                    if (status === 'OK') {
+                        var location = results[0].geometry.location;
+                        placeMarker(location);
+                    } else {
+                        console.error('Error geocoding address:', address);
+                    }
+                });
+            });
+
+            // 마커 클러스터를 생성
+            markerCluster = new MarkerClusterer(map, markers, {
+                imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+                gridSize: 60,
+                minimumClusterSize: 2
+            });
+        }
+
+        function placeMarker(location) {
+            // 새로운 마커를 생성하고 지도에 추가
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+
+            // 마커를 배열에 추가
+            markers.push(marker);
+        }
+
+        function searchAddress() {
+            var address = document.getElementById('addressInput').value;
+            geocoder.geocode({'address': address}, function(results, status) {
+                if (status === 'OK') {
+                    var location = results[0].geometry.location;
+                    map.setCenter(location);
+                    placeMarker(location);
+                } else {
+                    alert('주소를 찾을 수 없습니다.');
+                }
+            });
+        }
+
+        function findCurrentLocation() {
+            // 사용자의 현재 위치를 찾음
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    map.setCenter(pos);
+                    placeMarker(pos);
+                }, function() {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                // 브라우저가 Geolocation API를 지원하지 않을 때 처리
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            // 위치 정보를 얻는데 문제가 있을 때 처리
+            alert("위치 정보를 얻는데 문제가 발생했습니다.");
+        }
+    </script>
+</head>
+<body>
+    <!-- 지도 표시 요소 추가-->
+    <div id="map" style="height: 1000px; width: 100%;"></div>
+
+    <!-- 주소 검색 기능 추가 -->
+    <div>
+        <input type="text" id="addressInput" placeholder="주소를 입력하세요">
+        <button onclick="searchAddress()">검색</button>
+    </div>
+
+    <!-- 현재 위치로 이동하는 버튼 추가 -->
+    <div>
+        <button onclick="findCurrentLocation()">내 위치로 이동</button>
+    </div>
+
+    <!-- 지도 초기화 함수 호출-->
+    <script>
+        initMap();
+    </script>
+</body>
+<style>
+     body{
+        background-color:black;
+     }
+</style>
+</html>
