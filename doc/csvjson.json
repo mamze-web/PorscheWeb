@@ -1,0 +1,162 @@
+[
+  {
+    "time": "",
+    "temp": "",
+    "humidity": ""
+  },
+  {
+    "time": 1,
+    "temp": 0,
+    "humidity": 11
+  },
+  {
+    "time": 2,
+    "temp": -1,
+    "humidity": 12
+  },
+  {
+    "time": 3,
+    "temp": -2,
+    "humidity": 14
+  },
+  {
+    "time": 4,
+    "temp": 0,
+    "humidity": 14
+  },
+  {
+    "time": 5,
+    "temp": 0,
+    "humidity": 15
+  },
+  {
+    "time": 6,
+    "temp": -4,
+    "humidity": 12
+  },
+  {
+    "time": 7,
+    "temp": -4,
+    "humidity": 13
+  },
+  {
+    "time": 8,
+    "temp": -5,
+    "humidity": 6
+  },
+  {
+    "time": 9,
+    "temp": -3,
+    "humidity": 5
+  },
+  {
+    "time": 10,
+    "temp": -2,
+    "humidity": 23
+  },
+  {
+    "time": 11,
+    "temp": -2,
+    "humidity": 12
+  },
+  {
+    "time": 12,
+    "temp": 0,
+    "humidity": 8
+  },
+  {
+    "time": 13,
+    "temp": 1,
+    "humidity": 23
+  },
+  {
+    "time": 14,
+    "temp": 2,
+    "humidity": 24
+  },
+  {
+    "time": 15,
+    "temp": 2,
+    "humidity": 33
+  },
+  {
+    "time": 16,
+    "temp": 3,
+    "humidity": 13
+  },
+  {
+    "time": 17,
+    "temp": 2,
+    "humidity": 14
+  },
+  {
+    "time": 18,
+    "temp": 1,
+    "humidity": 15
+  },
+  {
+    "time": 19,
+    "temp": 2,
+    "humidity": 15
+  },
+  {
+    "time": 20,
+    "temp": 1,
+    "humidity": 14
+  },
+  {
+    "time": 21,
+    "temp": 1,
+    "humidity": 13
+  },
+  {
+    "time": 22,
+    "temp": 0,
+    "humidity": 13
+  },
+  {
+    "time": 23,
+    "temp": 0,
+    "humidity": 13
+  },
+  {
+    "time": 24,
+    "temp": -2,
+    "humidity": 14
+  },
+  {
+    "time": 25,
+    "temp": -3,
+    "humidity": 15
+  },
+  {
+    "time": 26,
+    "temp": -2,
+    "humidity": 22
+  },
+  {
+    "time": 27,
+    "temp": -1,
+    "humidity": 22
+  },
+  {
+    "time": 28,
+    "temp": -6,
+    "humidity": 24
+  },
+  {
+    "time": 29,
+    "temp": -5,
+    "humidity": 26
+  },
+  {
+    "time": 30,
+    "temp": -4,
+    "humidity": 29
+  },
+  {
+    "time": 31,
+    "temp": 0,
+    "humidity": 30
+  }
+]

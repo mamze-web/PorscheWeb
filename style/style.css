@@ -1,274 +1,72 @@
-@media (min-width: 768px) {
-    /* 데스크탑에 최적화된 예외 CSS 코드*/
-
 #main{
-    font-family: "Noto Sans KR";
-    -ms-overflow-style:none;
-}
-::-webkit-scrollbar{
-    display: none;
+  font-family: "Noto Sans KR";
 }
 .logo{
-    display: flex;
-    justify-content: center;
-    padding-bottom:10px;
+  display: flex;
+  justify-content: center;
+  padding:2%;
 }
-#mainbody{
-    width:100%;
-    margin:0;
+#data{
+  color:rgb(150,150,150);
+  font-weight: bold;
+  font-size:30px;
+  margin:40px;
 }
-/*#data{
-    color:rgb(150,150,150);
-    font-weight: bold;
-    font-size:30px;
-    padding-bottom:40px;
-}*/
 .line{
-
-    border-top:2px solid rgb(200,200,200);
+  margin-bottom:30px;
+  border-top:2px solid rgb(200,200,200);
 }
 #maphead{
-
-    height:85vh;
+  display: flex;
+  width:100%;
+  height:500px;
+  justify-content: center;
 }
-#addressbox{
-    position:fixed;
-    right:10px;
-    bottom:10px;
-    border-radius: 20px;
-    border:2px solid blue;
-    padding:10px;
-    background-color:rgba(255,255,255,0.9);
-}
-#leftbox{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   text-align: center;
-}
-.addresstopbox{
-    position:fixed;
-    right:10px;
-    bottom:300px;
-    border-radius: 20px;
-    border:2px solid blue;
-    padding:10px;
-    background-color:rgba(255,255,255,0.9);
-}
-#box{
-    position:fixed;  
-    left:10px;
-    height:600px;
-    width:250px;
-    bottom:10px;
-    border-radius: 20px;
-    border:2px solid blue;
-    padding:10px;
-    background-color:rgba(255,255,255,0.9);
-    overflow: auto;
-}
-
 #map{
-
-    height:100%;
-    width:100%;
-    
-    padding-bottom:4vh ;
+  margin-right:5%;
+  width:70%;
+  border-radius: 20px;
+  height:auto;
+  box-shadow:0px 0px 30px rgb(140,140,140);
 }
 #infotop{
-    text-align:left;
-    border-radius: 20px;
-    padding:40px;
-    box-shadow:0px 0px 30px rgb(140,140,140);
+  text-align: left;
+  border-radius: 20px;
+  padding:40px;
+  box-shadow:0px 0px 30px rgb(140,140,140);
 }
 #list{
-    color:rgb(140,140,140);
-    text-decoration-line:none ;
-    font-size:10px;
-}
-li{
-    font-size:10px;
+  color:rgb(140,140,140);
+  text-decoration-line:none ;
 }
 #list:hover{
-    color:blue;
+  color:blue;
 
 }
 #dnbtn{
-    border:none;
-    color:white;
-    background-color:blue;
-    border-radius: 20px;
+  border:none;
+  color:white;
+  background-color:blue;
+  border-radius: 20px;
 }
 .zip{
-    margin-top:20px;
-    display: flex;
-    height:200px;
-    justify-content: space-around;
+  margin-top:50px;
+  display: flex;
+  justify-content: space-around;
 }
-#info{
-    width:100%;
-    height:auto;
-    text-align: center;
-    border-radius: 20px;
-}
-.graph{
-    width:100%;
-    height:40%;
-    text-align: center;
-    border-radius: 20px;
-}
-h2{
-    margin:0;
+#info,#graph{
+  width:25%;
+  height:auto;
+  box-shadow:0px 0px 30px rgb(140,140,140);
+  text-align: center;
+
+  border-radius: 20px;
 }
 #maptext{
-    width:100%;
-    img{
-        border-radius: 10px;
-        width:100%;
-    }
+  width:100%;
 }
 
-#myChart, #myChar2{
-    width:250px;
-    height:400%;
-    margin-top:20px;
+#myChart , #myChart2{
+  padding:20px 20px 0px 20px;
+  margin-top:20px;
 }
-
-}
-
-@media (max-width: 768px) {
-   
-#main{
-    font-family: "Noto Sans KR";
-    -ms-overflow-style:none;
-}
-::-webkit-scrollbar{
-    display: none;
-}
-.logo{
-    display: flex;
-    justify-content: center;
-    padding-bottom:10px;
-}
-#mainbody{
-    width:100%;
-    margin:0;
-}
-/*#data{
-    color:rgb(150,150,150);
-    font-weight: bold;
-    font-size:30px;
-    padding-bottom:40px;
-}*/
-.line{
-
-    border-top:2px solid rgb(200,200,200);
-}
-#maphead{
-
-    height:85vh;
-}
-#addressbox{
-    position:fixed;
-    right:10px;
-    bottom:10px;
-    border-radius: 20px;
-    border:2px solid blue;
-    padding:10px;
-    background-color:rgba(255,255,255,0.9);
-}
-#leftbox{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   text-align: center;
-}
-.addresstopbox{
-    position:fixed;
-    right:10px;
-    bottom:300px;
-    border-radius: 20px;
-    border:2px solid blue;
-    padding:10px;
-    background-color:rgba(255,255,255,0.9);
-}
-#box{
-    position:fixed;  
-    left:10px;
-    height:600px;
-    width:250px;
-    bottom:10px;
-    border-radius: 20px;
-    border:2px solid blue;
-    padding:10px;
-    background-color:rgba(255,255,255,0.9);
-    overflow: auto;
-}
-
-#map{
-
-    height:100%;
-    width:100%;
-    
-    padding-bottom:4vh ;
-}
-#infotop{
-    text-align:left;
-    border-radius: 20px;
-    padding:40px;
-    box-shadow:0px 0px 30px rgb(140,140,140);
-}
-#list{
-    color:rgb(140,140,140);
-    text-decoration-line:none ;
-    font-size:10px;
-}
-li{
-    font-size:10px;
-}
-#list:hover{
-    color:blue;
-
-}
-#dnbtn{
-    border:none;
-    color:white;
-    background-color:blue;
-    border-radius: 20px;
-}
-.zip{
-    margin-top:20px;
-    display: flex;
-    height:200px;
-    justify-content: space-around;
-}
-#info{
-    width:100%;
-    height:auto;
-    text-align: center;
-    border-radius: 20px;
-}
-.graph{
-    width:100%;
-    height:40%;
-    text-align: center;
-    border-radius: 20px;
-}
-h2{
-    margin:0;
-}
-#maptext{
-    width:100%;
-    img{
-        border-radius: 10px;
-        width:100%;
-    }
-}
-
-#myChart, #myChar2{
-    width:250px;
-    height:400%;
-    margin-top:20px;
-}
-}
-

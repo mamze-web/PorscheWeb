@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="all and (min-width:1200px)" href="desktop.css" >
 <link rel="stylesheet" media="all and (min-width:768px) and (max-width:1199px)" href="laptop.css" >
 
@@ -35,45 +34,38 @@
  
 </div>  
 
-<div id="mainbody">
-<!--<span id="data">곤충호텔 데이터 확인하기</span>-->
+<span id="data">곤충호텔 데이터 확인하기</span>
 
     <div id="maphead">
         <div id="map"></div>
-        <div id="addressbox">
-            <div id="toptext">자료실</div>
-            <div class="line"></div>  
-            <div id="addressList"></div> 
+ 
+        <div id="infotop">
+            <div id="addressListbox">
+                <div id="toptext">자료실</div>
+                <div class="line"></div>  
+                <div id="addressList"></div> 
+            </div>   
         </div>
-        <div class="addresstopbox">
-            <div id="averageValue"></div>
-        </div>
-        
-    <div id="leftbox">
-        <div id="box">
+
+</div>
+    <!-- 지도 초기화 함수 호출-->
+    <div class="zip"> 
         <div id="info">
-   
+
             <div id="maptext"></div>
         
         </div>
-        <div class="line"></div>
-        <div class="graph">
-        <canvas id="myChart" width="400" height="400"></canvas>
+        <div id="graph">
+        <canvas id="myChart" ></canvas>
+        
         </div>
-        <div class="line"></div>
-     
-        </div>
-    </div>
-     <!--   
-
-
-    <div class="zip"> 
-       
+        <div id="graph">
+        <canvas id="myChart2"></canvas>
     </div>
     </div>   
-    </div>-->
-</div>
-</div>
+    </div>
+
+
 </div>
 </body>
 </html>
