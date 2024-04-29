@@ -1,0 +1,38 @@
+.main-header{
+    display: flex;
+}
+#body-top{
+    display: flex;
+    justify-content: space-around;
+}
+
+#map-header{
+    width:50%;
+    height:98%;
+    position: fixed;
+    position:absolute;
+    transform: translateX(100%);
+    transition:0.5s ease;
+    display: felx;
+    justify-content: center;
+    align-items: center;
+    right:-1px;
+}
+#map{
+    width:200px;
+    height:200px;
+}
+#addresslist{
+    width:60%;
+    border:1px solid black;
+}
+#addresslist:hover > #map{
+    color: blue;
+}
+.movedmap{
+    right:300px !important;
+    
+}
+.maphome{
+    right:-1px;
+}

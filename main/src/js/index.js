@@ -1,31 +1,28 @@
-import {
-    collection,
-    addDoc,
-    getDocs,
-    getFirestore,
-  } from "firebase/firestore/lite";
-  import { firebaseApp } from "../commons/libraries/firebase";
-  export default function FirebasePage(): JSX.Element {
-    // create
-    const onClickSubmit = (): void => {
-      const board = collection(getFirestore(firebaseApp), "board");
-      void addDoc(board, {
-        writer: "철수",
-        title: "안녕하세요",
-        contents: "반갑습니다",
-      });
-    };
-    const onClickFetch = async (): Promise<void> => {
-      // fetch
-      const board = collection(getFirestore(firebaseApp), "board");
-      const result = await getDocs(board);
-      const datas = result.docs.map((el) => el.data());
-      console.log(datas);
-    };
-    return (
-      <>
-        <button onClick={onClickSubmit}>등록하기</button>
-        <button onClick={onClickFetch}>조회하기</button>
-      </>
-    );
+let count = 1;
+
+function initMap() {
+    // 초기 위치 설정 (서울 시청)
+    var seoulCityHall = {lat: 37.5665, lng: 126.9780};
+    
+    // 맵 생성
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 13, // 확대 수준
+      center: seoulCityHall // 초기 중심 위치
+    });
+
   }
+
+function mapbtn(){
+    let mapwindow = document.getElementById('map-header');
+    mapwindow.classList.add('movedmap');
+    mapwindow.classList.add('maphome');
+    if(count%2==0){
+        mapwindow.classList.toggle('movedmap');
+        count=count+1
+    }
+    else if(count%2==1){
+        mapwindow.classList.toggle('maphome');
+        count=count+1
+    }
+    console.log(count)
+}
